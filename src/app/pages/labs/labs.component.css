@@ -1,0 +1,23 @@
+.container {
+    padding: 3rem;
+}
+
+.box {
+    max-width: 500px;
+    height: 10px;
+    display: block;
+    background-color: red;
+}
+
+.message-err {
+    background-color: red;
+    color: white;
+    opacity: 0;
+    padding: 4px;
+    transition: all linear .3s;
+
+}
+
+.message-err.show {
+    opacity: 0.6;
+}

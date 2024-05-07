@@ -1,0 +1,129 @@
+<h1>Nueva sitaxis en angular permitida!</h1>
+<h2>If and else</h2>
+<div>
+@if(developer() === 'Sergio Galvi'){
+  <p> Soy Sergio! XD</p>
+} @else {
+  <p>Soy otro developer! XD</p>
+}
+</div>
+<h2>Ciclo For</h2>
+<ul>
+@for (task of tasks(); track $index) {<!-- track: Elemento para track-->
+  <li>{{ task }} {{ $index }}</li>
+} @empty {
+  <li>No hay tareas!</li>
+}
+</ul>
+
+<h2>Ciclo Switch</h2>
+<ul>
+@switch (developer()) {
+  @case ('Sergio Galvi1') {
+    <li>Case 1</li>
+  }
+  @case ('Sergio Galvis1') {
+    <li>Case 2</li>
+  }
+  @default {
+    <li>No hay developer</li>
+  }
+}
+</ul>
+
+
+
+<h1>Hola mundo!</h1>
+<h2>Mi primir proyecto con Angular</h2>
+<h3> {{ welcome }} </h3>
+<ul>
+  <li *ngFor="let task of tasks()">
+    {{task}}
+  </li>
+</ul>
+<hr />
+<h2>{{ 'Hola amigos' . repeat(4) }}</h2>
+<p>La suma de 3 + 3 es {{ 3 + 3 }}</p>
+<strong>Soy {{ developer() }} y tengo {{ age }} años, mi fecha de nacimiento: {{ cumple }}</strong>
+<br>
+<img [src]="pathImg" [width]="wImg" alt="Imagen de un caballo negro">
+<br>
+
+
+<p>Persona : {{person().name}}</p>
+<p>Edad : {{person().age}}</p>
+<img [src]="person().avatar" [width]="wImg" alt="Avatar de la persona">
+<button [disabled]="isDisabled">Click me</button>
+<hr />
+<p>Evento del Clic</p>
+<button (click)="clickHandler()">Click Me</button>
+<hr />
+<p>Evento de doble Clic</p>
+<button (dblclick)="clickHandler()">Double Click</button>
+<hr />
+<p>Evento de Onchange</p>
+<input (change)="changeTextInput($event)" type="text">
+<p>Este es el valor del input {{ valueInput }}</p>
+<hr />
+<p>Evento de Keydown</p>
+<input type="text" (keydown)="keyDownHandler($event)">
+<hr />
+<p>Evento de Keydown con letra especifica!</p>
+<input type="text" (keydown.shift.t)="keyDownHandler($event)">
+
+<!-- Signals  -->
+<h1>Signals</h1>
+<p>Evento de Onchange</p>
+<input (change)="changeSignal($event)" type="text">
+<p>Este es el valor del input {{ developer() }}</p>
+
+<ul>
+  <p>Total : {{tasks().length}} Tareas</p>
+  <li *ngFor="let task of tasks(); index as i">
+    {{i}} : {{task}}
+  </li>
+</ul>
+
+<div *ngIf=" 1 === 1">
+  My content
+</div>
+
+<input type="number" [value]="person().age" (change)="changeAge($event)">
+<br>
+<div *ngIf=" developer() === 'Sergio Galvis' && person().age >= 18 ; else elseBlokc"><!-- Sensitive Keys -->
+  Soy {{ developer() }} y soy mayor de 18
+</div>
+<ng-template #elseBlokc>
+  Soy {{ developer() }} y soy menor de 18 años
+</ng-template>
+<hr>
+<h4>Switch</h4>
+<input type="text" [value]="person().name" (change)="changeNamePerson($event)">
+<div [ngSwitch]="person().name">
+  <p *ngSwitchCase="'Sergio'">Soy Sergio</p>
+  <p *ngSwitchCase="'Ivan'">Soy Iván</p>
+  <p *ngSwitchCase="'Juan'">Soy Juan</p>
+  <p *ngSwitchCase="'Pedro'">Soy Pedro</p>
+  <p *ngSwitchCase="'Luis'">Soy Luis</p>
+  <p *ngSwitchDefault>Su nombre no se encuentra!</p>
+</div>
+<hr>
+<input type="color" [formControl]="colorCtrl">
+<p>color hexadecimal: {{colorCtrl.value}}</p>
+<hr>
+<svg>
+  <g>
+    <rect x="0" y="0" height="100" width="100" [attr.fill]="colorCtrl.value" />
+  </g>
+</svg>
+<hr>
+<input type="number" [formControl]="widthCtrl">
+<span class="box" [style.width.px]="widthCtrl.value"></span>
+<hr>
+<p>
+  <input type="text" [formControl]="nameCtrl"><br />
+  <span class="message-err" [class.show]="nameCtrl.invalid && nameCtrl.touched">Nombre invalido</span>
+</p>
+<p>
+  <input type="text">
+</p>
